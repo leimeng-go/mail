@@ -1,0 +1,28 @@
+syntax ="v1"
+
+type (
+    UserRequest {
+        ID int64 `path:"id"`
+    }
+    UserReply{
+        ID int64 `json:"id"`
+        Name string `json:"name"`
+        Balance float64 `json:"balance"`
+    }
+    UserOrderRequest {
+        ID int64 `path:"id"`
+    }
+    UserOrdersReply {
+        ID int64 `json:"id"`
+        State uint32 `json:"state"`
+        CreateAt string `json:"create_at"`
+    }
+)
+
+service mail-api{
+    @handler UserHandler 
+    get /user/:id (UserRequest) returns (UserReply)
+
+    @handler UserOrdersHandler 
+    get /user/:id/orders (UserOrderRequest) returns (UserOrdersReply)
+}
