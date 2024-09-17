@@ -13,7 +13,6 @@ type UserLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
-	OrderLogic *OrderLogic
 }
 
 func NewUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserLogic {
@@ -26,6 +25,15 @@ func NewUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserLogic {
 
 func (l *UserLogic) User(req *types.UserRequest) (resp *types.UserReply, err error) {
 	// todo: add your logic here and delete this line
-
+    mUser,err:=l.svcCtx.UserModel.FindOne(l.ctx,req.ID)
+	if err!=nil{
+		return  nil,err 
+	}
+	resp=&types.UserReply{
+		ID: mUser.Id,
+		Name: mUser.Name,
+		Mobile: mUser.Mobile,
+		Avator: mUser.Avatar.String,
+	}
 	return
 }

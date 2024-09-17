@@ -32,22 +32,40 @@ type ProductRequest struct {
 	ID int64 `path:"id"`
 }
 
+type RoleReply struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type RoleRequest struct {
+	ID string `path:"id"`
+}
+
+type UserAddReply struct {
+	ID string `json:"id"`
+}
+
+type UserAddRequest struct {
+	Name   string `json:"name"`
+	Email  string `json:"email"`
+	Mobile string `json:"mobile"`
+	Avator string `json:"avator"`
+}
+
 type UserOrderRequest struct {
-	ID int64 `path:"id"`
+	ID string `path:"id"`
 }
 
 type UserOrdersReply struct {
-	ID       int64  `json:"id"`
-	State    uint32 `json:"state"`
-	CreateAt string `json:"create_at"`
+	Orders []OrderReply `json:"orders"`
 }
 
 type UserReply struct {
-	ID      int64   `json:"id"`
+	ID      string  `json:"id"`
 	Name    string  `json:"name"`
 	Balance float64 `json:"balance"`
 }
 
 type UserRequest struct {
-	ID int64 `path:"id"`
+	ID string `path:"id"`
 }

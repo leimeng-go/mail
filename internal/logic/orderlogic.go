@@ -28,19 +28,3 @@ func (l *OrderLogic) Order(req *types.OrderRequest) (resp *types.OrderReply, err
 
 	return
 }
-
-func (l *OrderLogic)ordersByUser(uid int64) ([]*types.OrderReply,error) {
-	if uid==123{
-		return []*types.OrderReply{
-			{
-				ID: "32fj2938jrf93",
-				State: 1,
-				CreateAt: "2022-08-01",
-		},{
-			ID: "vjiejfoef323",
-			State: 1,
-			CreateAt: "2022-08-02",
-		}},nil 
-    }
-	return nil,nil 
-}

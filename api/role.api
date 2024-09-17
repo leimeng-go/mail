@@ -1,0 +1,11 @@
+syntax ="v1"
+
+type(
+    RoleRequest {
+        ID string `path:"id"`
+    }
+    RoleReply{
+        ID string `json:"id"`
+        Name string `json:"name"`
+    }
+)

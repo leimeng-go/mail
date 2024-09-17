@@ -13,7 +13,6 @@ type UserOrdersLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
-	OrderLogic *OrderLogic
 }
 
 func NewUserOrdersLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserOrdersLogic {
@@ -21,18 +20,11 @@ func NewUserOrdersLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserOr
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
-		OrderLogic: NewOrderLogic(ctx, svcCtx),
 	}
 }
 
 func (l *UserOrdersLogic) UserOrders(req *types.UserOrderRequest) (resp *types.UserOrdersReply, err error) {
 	// todo: add your logic here and delete this line
-    orders,err:=l.OrderLogic.ordersByUser(req.ID)
-    if err != nil {
-		return nil, err
-	}
 
-	return &types.UserOrdersReply{
-		
-	}  
+	return
 }
