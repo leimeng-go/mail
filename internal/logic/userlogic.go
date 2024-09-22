@@ -32,8 +32,6 @@ func (l *UserLogic) User(req *types.UserRequest) (resp *types.UserReply, err err
 	resp=&types.UserReply{
 		ID: mUser.Id,
 		Name: mUser.Name,
-		Mobile: mUser.Mobile,
-		Avator: mUser.Avatar.String,
 	}
 	return
 }

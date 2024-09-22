@@ -1,3 +1,11 @@
 Name: mail-api
 Host: 0.0.0.0
 Port: 8888
+cache: 
+  - host: 192.168.3.55:6379
+    pass: "181205"
+Database: 
+  host: 192.168.3.55
+  port: 3306
+  
+ 

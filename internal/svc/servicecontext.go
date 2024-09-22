@@ -13,7 +13,7 @@ type ServiceContext struct {
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
-	conn:=sqlx.NewSqlConn("mysql","root:181205@tcp(IP_ADDRESS:3306)/mail?charset=utf8mb4&parseTime=true")
+	conn:=sqlx.NewSqlConn("mysql","root:181205@tcp(192.168.3.55:3306)/test?charset=utf8mb4&parseTime=true")
 	return &ServiceContext{
 		Config: c,
 		UserModel: model.NewUsersModel(conn,c.Cache),

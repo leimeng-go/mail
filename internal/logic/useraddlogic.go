@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"database/sql"
 
 	"mail/internal/model"
 	"mail/internal/svc"
@@ -28,7 +29,15 @@ func NewUserAddLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserAddLo
 func (l *UserAddLogic) UserAdd(req *types.UserAddRequest) (resp *types.UserAddReply, err error) {
 	// todo: add your logic here and delete this line
     l.svcCtx.UserModel.Insert(l.ctx,&model.Users{
-		Id: xid.ID.String(),
+		Id: xid.New().String(),
+		Name: req.Name,
+		Password: "123456",
+		Mobile: req.Mobile,
+		Avatar: sql.NullString{
+			String: req.Avator,
+			Valid: true,
+		},
+
 	})
 	return
 }
