@@ -1,6 +1,7 @@
 package svc
 
 import (
+	"fmt"
 	"mail/internal/config"
 	"mail/internal/model"
 
@@ -13,7 +14,8 @@ type ServiceContext struct {
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
-	conn:=sqlx.NewSqlConn("mysql","root:181205@tcp(192.168.3.55:3306)/test?charset=utf8mb4&parseTime=true")
+	dns:=fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=%s&parseTime=%s&loc=%s",c.Database.Host,c.Database.Port,c.Database.User,c.Database.Password,c.Database.Database,c.Database.Charset,c.Database.ParseTime,c.Database.Loc)
+	conn:=sqlx.NewSqlConn(c.Database.Driver,dns)
 	return &ServiceContext{
 		Config: c,
 		UserModel: model.NewUsersModel(conn,c.Cache),

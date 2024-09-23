@@ -1,11 +1,17 @@
 Name: mail-api
 Host: 0.0.0.0
 Port: 8888
-cache: 
-  - host: 192.168.3.55:6379
-    pass: "181205"
-Database: 
-  host: 192.168.3.55
+redisconf: 
+  host: 192.168.3.55:6379
+  pass: "181205"
+database: 
+  driver: mysql
+  host: 192.168.3.55 
   port: 3306
+  user: root 
+  password: "181205"
+  database: test 
+  charset: utf8mb4
+  parseTime: "true"
+  loc: Local
   
- 
